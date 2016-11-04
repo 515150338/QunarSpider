@@ -50,7 +50,7 @@ After run all these commands you should be able to look at your QunarSpider vers
 
 ### Demo Information
 
-- `Demo:` Interface: 
+- `Demo:` Interface: https://github.com/luozijian/QunarSpider
 
 ### Contact
 

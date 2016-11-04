@@ -143,17 +143,4 @@ $spider->on_extract_field = function($fieldname, $data, $page)
 
 $spider->start();
 
-// CREATE TABLE `qunar_hotels` (
-//   `hotels_id` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '酒店ID',
-//   `hotels_name` varchar(255) NOT NULL DEFAULT '' COMMENT '酒店名称',
-//   `hotels_price` decimal(10,2) NOT NULL COMMENT '酒店的价格',
-//   `comment_count` varchar(10) NOT NULL DEFAULT '' COMMENT '酒店的评价总数',
-//   `goods_rate` varchar(10) NOT NULL DEFAULT '' COMMENT '酒店的好评率',
-//   `goods_count` varchar(10) NOT NULL DEFAULT '' COMMENT '酒店的好评数',
-//   `bads_count` varchar(10) NOT NULL DEFAULT '' COMMENT '酒店的差评数',
-//   `mids_count` varchar(10) NOT NULL DEFAULT '' COMMENT '酒店的中评数',
-//   `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '抓取时间',
-//   `update_user` bigint(20) NOT NULL DEFAULT '0' COMMENT '用户id',
-//   PRIMARY KEY (`hotels_id`)
-// ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='去哪儿酒店表'
 
