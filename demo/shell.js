@@ -1,16 +1,16 @@
 setInterval(function(){
-	var data = new Object();
+	var data = {};
 	$('.b_ugcfeed').map(function(index, value){
-		data.id = $(value).data('id');
-		data.usernickname = $(value).find('.usernickname a').text();
-		data.userlevel = $(value).find('.userlevel a').text(); 
+		var el = $(value);
+		data.id = el.data('id');
+		data.usernickname = el.find('.usernickname a').text();
+		data.userlevel = el.find('.userlevel a').text();
 		data.userstat = [];
-		$(value).find('.userstat li').each(function(index){
+		el.find('.userstat li').each(function(index){
 			data.userstat[index] = $(this).text();
 		});
 	});
-	
-	$.getJSON('http://localhost/QunarSpider/demo/hello.php?jsoncallback=?',data,function(result){
+	$.getJSON('http://localhost/QunarSpider/demo/store.php?jsoncallback=?',data,function(result){
     	console.log(result);
 	});
 	$('.next a').trigger('click');
