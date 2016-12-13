@@ -1,3 +1,10 @@
+if (typeof jQuery == 'undefined') { 
+// jQuery 未加载
+var qunarFrame = document.getElementById("qunarFrame")；
+console.log(1);
+} else{
+    console.log(2);
+}
 $("<iframe src="+window.location.href+" width='400px' height='400px' id='qunarFrame' name='qunarFrame'></iframe>").prependTo('body');
 $('#qunarFrame').get(0).onload = function () {
     var is_onload = false;
