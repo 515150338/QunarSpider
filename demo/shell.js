@@ -1,7 +1,8 @@
 $("<iframe src="+window.location.href+" width='400px' height='400px' id='qunarFrame' name='qunarFrame'></iframe>").prependTo('body');
 $('#qunarFrame').get(0).onload = function () {
     var is_onload = false;
-    test(this,is_onload);
+    setTimeout(test(this,is_onload),1000);
+    
 };
 function _test(context,is_onload) {
     return function () {
@@ -58,6 +59,8 @@ function test(context,is_onload){
     }
     var data = {};
     var length = win.$('.b_ugcfeed').length;
+    console.log('aa:'+length);
+
     var count = 0;
     win.$('.b_ugcfeed').map(function(index, value){
         var el = $(value);
@@ -100,7 +103,6 @@ function test(context,is_onload){
             console.log(result);
             count++;
             console.log(count);
-            console.log('aa:'+length);
             if(count == length){
                 win.$('.js-pager').find('.ui-page ul li').each(function () {
                     if($(this).hasClass('next')) {
