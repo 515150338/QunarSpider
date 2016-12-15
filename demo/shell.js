@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 if (typeof jQuery == 'undefined') {
     console.log("无jquery");
 }
