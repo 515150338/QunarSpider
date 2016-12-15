@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 if (typeof jQuery == 'undefined') {
     console.log("无jquery");
 }
@@ -15,12 +14,13 @@ function _test(context,is_onload) {
 }
 
 function test(context,is_onload){
-    var url = 'http://hotel.qunar.com/city/shenzhen/dt-';
+    var city = 'shenzhen';//可修改
+    var url = 'http://hotel.qunar.com/city/'+city+'/dt-';
     var hotel = {};
 
     var win = context.contentWindow;
     var match = context.src.match(/dt-\d+/);
-    var hotel_id = match[0].substring(3);
+    var hotel_id = city + '_' + match[0].substring(3);
     hotel.id = hotel_id;
     if(!is_onload){
         console.log('onload!');
