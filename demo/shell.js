@@ -1,3 +1,6 @@
+if (typeof jQuery == 'undefined') {
+    console.log("无jquery");
+}
 $("<iframe src="+window.location.href+" width='400px' height='400px' id='qunarFrame' name='qunarFrame'></iframe>").prependTo('body');
 $('#qunarFrame').get(0).onload = function () {
     var is_onload = false;
@@ -11,7 +14,6 @@ function _test(context,is_onload) {
 }
 
 function test(context,is_onload){
-
     var url = 'http://hotel.qunar.com/city/shenzhen/dt-';
     var hotel = {};
 
@@ -46,6 +48,14 @@ function test(context,is_onload){
             hotel.mids_count = (win.$('.js-neutralCount').text().match(/\d+/))[0];
             hotel.bads_count = (win.$('.js-negativeCount').text().match(/\d+/))[0];
         }
+
+        hotel.price = win.$('#toRoomtool').find('.pr b').text();
+        hotel.specialist_comment_count = win.$('#jt_guru').find('em').text();
+        if(win.$('.score_rank').length > 0){
+            hotel.score_rank = (win.$('.score_rank').find('strong').text().match(/第\d+/))[0].substr(1);
+        }
+
+
         $.getJSON('http://localhost/QunarSpider/demo/store_hotel.php?jsoncallback=?',hotel,function(result){
             console.log(result);
         });
@@ -83,7 +93,8 @@ function test(context,is_onload){
             data.star = (el.find('.in').attr('style').match(/\d+/))/20;
         }
         // data.comment = el.find('.js-content').text();
-        data.comment = 'aa';
+        data.comment = el.find('.title a').attr('href');
+
 
         var reg_checkin = /\d+年/;
         el.find('.js-checkin li').each(function(){

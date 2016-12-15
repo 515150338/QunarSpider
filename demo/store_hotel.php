@@ -19,6 +19,13 @@ if(isset($_GET['id'])){
     $data['goods_rate'] = $_GET['goods_rate'];
 
     $data['comment_count'] = $data['goods_count'] + $data['mids_count'] + $data['bads_count'];
+    $data['price'] = $_GET['price'];
+    $data['specialist_comment_count'] = $_GET['specialist_comment_count'];
+    if(isset($_GET['score_rank'])){
+        $data['score_rank'] = $_GET['score_rank'];
+    }else{
+        $data['score_rank'] = 0;
+    }
     $data['created_at'] = date('y-m-d h:i:s',time());
 
     //插入操作
@@ -30,6 +37,9 @@ if(isset($_GET['id'])){
                           '{$data['goods_count']}',
                           '{$data['bads_count']}',
                           '{$data['mids_count']}',
+                          '{$data['price']}',
+                          '{$data['specialist_comment_count']}',
+                          '{$data['score_rank']}',
                           '{$data['created_at']}'
                       )";
     $sqlHelper = new sqlHelper();
