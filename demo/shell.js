@@ -49,7 +49,9 @@ function test(context,is_onload){
             hotel.bads_count = (win.$('.js-negativeCount').text().match(/\d+/))[0];
         }
 
-        hotel.price = win.$('#toRoomtool').find('.pr b').text();
+        if(win.$('#toRoomtool').length > 0){
+            hotel.price = win.$('#toRoomtool').find('.pr b').text();
+        }
         hotel.specialist_comment_count = win.$('#jt_guru').find('em').text();
         if(win.$('.score_rank').length > 0){
             hotel.score_rank = (win.$('.score_rank').find('strong').text().match(/第\d+/))[0].substr(1);

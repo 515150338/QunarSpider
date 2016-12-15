@@ -19,7 +19,11 @@ if(isset($_GET['id'])){
     $data['goods_rate'] = $_GET['goods_rate'];
 
     $data['comment_count'] = $data['goods_count'] + $data['mids_count'] + $data['bads_count'];
-    $data['price'] = $_GET['price'];
+    if(isset($_GET['price'])){
+        $data['price'] = $_GET['price'];
+    }else{
+        $data['price'] = 0;
+    }
     $data['specialist_comment_count'] = $_GET['specialist_comment_count'];
     if(isset($_GET['score_rank'])){
         $data['score_rank'] = $_GET['score_rank'];
