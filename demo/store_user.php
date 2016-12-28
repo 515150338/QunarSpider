@@ -51,7 +51,8 @@ if(isset($_GET['id'])){
     }
 
     if(isset($_GET['star'])){
-        $data['star'] = $_GET['star'];
+        preg_match('/\d+/',$_GET['star'],$matches);
+        $data['star'] = $matches[0]/20;
     }else{
         $data['star'] = 0;
     }

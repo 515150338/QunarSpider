@@ -21,17 +21,18 @@ function test(context,is_onload){
     var win = context.contentWindow;
     var match = context.src.match(/dt-\d+/);
     var hotel_id = city + '_' + match[0].substring(3);
+    var redirect_id = match[0].substring(3);
     hotel.id = hotel_id;
     if(!is_onload){
         console.log('onload!');
         if(win.$('.noHotelInfoContainer').length > 0){
             console.log('酒店不存在');
-            $("#qunarFrame").attr("src", url+(++hotel_id)+'/');
+            $("#qunarFrame").attr("src", url+(++redirect_id)+'/');
             return;
         }
         if(win.$('.waring-icon').length > 0){
             console.log('酒店停业');
-            $("#qunarFrame").attr("src", url+(++hotel_id)+'/');
+            $("#qunarFrame").attr("src", url+(++redirect_id)+'/');
             return;
         }
 
@@ -67,7 +68,7 @@ function test(context,is_onload){
 
     if(win.$('.js_no_com').length > 0){
         console.log('酒店无评论');
-        $("#qunarFrame").attr("src", url+(++hotel_id)+'/');
+        $("#qunarFrame").attr("src", url+(++redirect_id)+'/');
         return;
     }
     var data = {};
@@ -92,8 +93,10 @@ function test(context,is_onload){
         data.title = el.find('.title a').text();
         data.like_count = el.find('.js_like_count').text();
         data.reply_count = el.find('.js_reply_count').text();
-        if(win.$('.in').length > 0){
-            data.star = (el.find('.in').attr('style').match(/\d+/))/20;
+        if(win.$('.recommend').length > 0){
+            data.star = 100;
+        }else if(win.$('.in').length > 0){
+            data.star = el.find('.in').attr('style');
         }
         // data.comment = el.find('.js-content').text();
         data.comment = el.find('.title a').attr('href');
@@ -128,7 +131,7 @@ function test(context,is_onload){
                     }
                 });
                 if(!next){
-                    $("#qunarFrame").attr("src", url+(++hotel_id)+'/');
+                    $("#qunarFrame").attr("src", url+(++redirect_id)+'/');
                 }
             }else {
                 console.log('nonono');
